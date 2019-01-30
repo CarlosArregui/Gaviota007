@@ -14,8 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ActivityLogin"
-            android:parentActivityName=".SplashScreen"></activity>
+        <activity
+            android:name=".ActivityLogin"
+            android:parentActivityName=".SplashScreen" />
         <activity android:name=".MainActivity" />
         <activity
             android:name=".SplashScreen"
