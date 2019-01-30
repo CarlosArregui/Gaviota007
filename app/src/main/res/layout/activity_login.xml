@@ -18,8 +18,8 @@
         android:drawableLeft="@drawable/ic_person_black_24dp"
         android:drawablePadding="10dp"
         android:hint="Email"
-        android:textColor="@color/icons"
-        android:textColorHint="@color/icons"
+        android:textColor="@color/divider"
+        android:textColorHint="@color/divider"
         android:maxLines="1"
         android:textColorHighlight="@color/colorPrimaryDark"/>
 
@@ -32,8 +32,8 @@
         android:drawableLeft="@drawable/ic_lock_black_24dp"
         android:drawablePadding="10dp"
         android:hint="Password"
-        android:textColor="@color/icons"
-        android:textColorHint="@color/icons"
+        android:textColor="@color/divider"
+        android:textColorHint="@color/divider"
         android:textColorHighlight="@color/icons"
         android:maxLines="1"/>
 
