@@ -18,8 +18,9 @@
         android:drawableLeft="@drawable/ic_person_black_24dp"
         android:drawablePadding="10dp"
         android:hint="Email"
-        android:textColor="@color/colorPrimaryDark"
-        android:textColorHint="@color/colorPrimaryDark"
+        android:textColor="@color/icons"
+        android:textColorHint="@color/icons"
+        android:maxLines="1"
         android:textColorHighlight="@color/colorPrimaryDark"/>
 
     <EditText
@@ -31,9 +32,10 @@
         android:drawableLeft="@drawable/ic_lock_black_24dp"
         android:drawablePadding="10dp"
         android:hint="Password"
-        android:textColor="@color/colorPrimaryDark"
-        android:textColorHint="@color/colorPrimaryDark"
-        android:textColorHighlight="@color/colorPrimaryDark"/>
+        android:textColor="@color/icons"
+        android:textColorHint="@color/icons"
+        android:textColorHighlight="@color/icons"
+        android:maxLines="1"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -48,21 +50,22 @@
             android:layout_marginLeft="10dp"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="0dp"
-            android:textColor="@color/colorPrimaryDark"
-            android:buttonTint="@color/colorPrimaryDark"
+            android:textColor="@color/divider"
+            android:buttonTint="@color/divider"
             android:checked="true"/>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Forget Password"
-            android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginBottom="10dp"
             android:layout_marginTop="0dp"
-            android:textColor="@color/colorPrimaryDark"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
             android:drawableLeft="@drawable/ic_lock_open_black_24dp"
             android:drawablePadding="6dp"
-            android:padding="4dp"/>
+            android:padding="4dp"
+            android:text="Forget Password"
+            android:textColor="@color/divider" />
 
 
     </LinearLayout>
@@ -78,7 +81,7 @@
         android:layout_marginBottom="10dp"
         android:layout_marginTop="0dp"
         android:background="@drawable/shapelogin"
-        android:textColor="@color/primary"/>
+        android:textColor="@color/colorPrimary"/>
 
     <Button
         android:layout_width="match_parent"
@@ -91,7 +94,7 @@
         android:layout_marginBottom="10dp"
         android:layout_marginTop="0dp"
         android:background="@drawable/shapesignup"
-        android:textColor="@color/primary_dark"/>
+        android:textColor="@color/icons"/>
 
 
 
