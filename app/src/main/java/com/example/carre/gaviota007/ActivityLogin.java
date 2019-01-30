@@ -3,16 +3,11 @@ package com.example.carre.gaviota007;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-/**
- * @author Ovejo
- */
-
-public class MainActivity extends AppCompatActivity {
+public class ActivityLogin extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        //hola
+        setContentView(R.layout.activity_login);
     }
 }
