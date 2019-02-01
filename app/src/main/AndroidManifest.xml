@@ -14,9 +14,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Registro"></activity>
+        <activity android:name=".Registro"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ActivityLogin"
+            android:screenOrientation="portrait"
             android:parentActivityName=".SplashScreen" />
         <activity android:name=".MainActivity" />
         <activity
