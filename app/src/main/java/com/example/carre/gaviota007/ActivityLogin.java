@@ -16,12 +16,22 @@ public class ActivityLogin extends AppCompatActivity {
 
         sign_up =(Button)findViewById(R.id.sign_up);
         final Intent I = new Intent(this,Registro.class);
-        View.OnClickListener listar = new View.OnClickListener() {
+        View.OnClickListener registrar = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(I);
             }
         };
-        sign_up.setOnClickListener(listar);
+        sign_up.setOnClickListener(registrar);
+
+        log_in = (Button)findViewById(R.id.log_in);
+        final Intent I2 = new Intent(this,Principal.class);
+        View.OnClickListener logear = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(I2);
+            }
+        };
+        log_in.setOnClickListener(logear);
     }
 }
