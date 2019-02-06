@@ -31,6 +31,14 @@
           }
         },
         {
+          "client_id": "309577478544-dhfudgftqip5ep3a8v47qlc84o8i0rnu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.carre.gaviota007",
+            "certificate_hash": "8a14775866f6fa95e2adccd294aca98c1c6bee32"
+          }
+        },
+        {
           "client_id": "309577478544-ap1gfufh3aqa6k7m7lb1sl5lcdce531q.apps.googleusercontent.com",
           "client_type": 3
         }
