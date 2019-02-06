@@ -1,4 +1,4 @@
-package com.example.carre.gaviota007.Usuario;
+package com.example.carre.gaviota007.Evento;
 
 import java.util.Date;
 
