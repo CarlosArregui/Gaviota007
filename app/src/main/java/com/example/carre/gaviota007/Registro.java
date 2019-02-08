@@ -26,6 +26,8 @@ public class Registro extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //Paantalla de registro
         setContentView(R.layout.activity_registro);
         getSupportActionBar().hide();
         mAuth = FirebaseAuth.getInstance();
