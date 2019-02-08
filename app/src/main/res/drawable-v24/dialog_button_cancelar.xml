@@ -3,9 +3,9 @@
 
     <item android:state_pressed="true">
         <shape>
-            <solid android:color="@color/secondary_text" />
+            <solid android:color="@color/divider" />
 
-            <corners android:radius="25dp" />
+            <corners android:radius="2dp" />
 
             <padding android:bottom="10dp" android:left="10dp" android:right="10dp" android:top="10dp" />
         </shape>
@@ -14,9 +14,9 @@
 
     <item android:state_focused="true">
         <shape>
-            <solid android:color="@color/secondary_text" />
+            <solid android:color="@color/divider" />
 
-            <corners android:radius="25dp" />
+            <corners android:radius="2dp" />
 
             <padding android:bottom="10dp" android:left="10dp" android:right="10dp" android:top="10dp" />
         </shape>
@@ -25,7 +25,7 @@
 
     <item>
         <shape>
-            <solid android:color="@color/secondary_text" />
+            <solid android:color="@color/divider" />
 
             <corners android:radius="2dp" />
 

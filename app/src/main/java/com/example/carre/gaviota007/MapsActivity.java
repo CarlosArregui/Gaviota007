@@ -99,12 +99,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         final Intent I = new Intent(this,Principal.class);
 
-        TextView titulo = (TextView) customDialog.findViewById(R.id.titulo);
-        titulo.setText("Título del Dialog");
-
-        TextView contenido = (TextView) customDialog.findViewById(R.id.contenido);
-        contenido.setText("Mensaje con el contenido del dialog");
-
         ((Button) customDialog.findViewById(R.id.aceptar)).setOnClickListener(new View.OnClickListener() {
 
             @Override
