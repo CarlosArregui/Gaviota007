@@ -15,6 +15,7 @@
         android:src="@drawable/seagull" />
 
     <EditText
+        android:id="@+id/et_usuario"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -25,6 +26,7 @@
         android:inputType="textPersonName"
         android:maxLines="1"
         android:padding="15dp"
+        android:text="jorge"
         android:textColor="@color/divider"
         android:textColorHighlight="@color/colorPrimaryDark"
         android:textColorHint="@color/divider" />
@@ -41,6 +43,7 @@
         android:inputType="textPersonName"
         android:maxLines="1"
         android:padding="15dp"
+        android:text="@gmail.com"
         android:textColor="@color/divider"
         android:textColorHighlight="@color/colorPrimaryDark"
         android:textColorHint="@color/divider" />
@@ -56,6 +59,7 @@
         android:inputType="textPassword"
         android:maxLines="1"
         android:padding="15dp"
+        android:text="123456"
         android:textColor="@color/divider"
         android:textColorHighlight="@color/icons"
         android:textColorHint="@color/divider" />
@@ -72,6 +76,7 @@
         android:inputType="textPassword"
         android:maxLines="1"
         android:padding="15dp"
+        android:text="123456"
         android:textColor="@color/divider"
         android:textColorHighlight="@color/icons"
         android:textColorHint="@color/divider" />
