@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="100dp">
 
     <TextView
-        android:id="@+id/tv_recy_nombre"
+        android:id="@+id/tv_recy_creador"
         android:layout_width="140dp"
         android:layout_height="24dp"
         android:layout_marginStart="92dp"
@@ -17,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_recy_fecha"
+        android:id="@+id/tv_recy_tipo"
         android:layout_width="78dp"
         android:layout_height="22dp"
         android:layout_marginStart="256dp"
