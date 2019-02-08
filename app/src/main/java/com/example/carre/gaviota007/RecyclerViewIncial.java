@@ -30,9 +30,8 @@ public class RecyclerViewIncial extends AppCompatActivity {
         puntos= new ArrayList<>();
         FirebaseDatabase firebase= FirebaseDatabase.getInstance();
 
-        adapter= new AdaptadorRV(puntos);
-        rv.setAdapter(adapter);
-        firebase.getReference().getRoot().addValueEventListener(new ValueEventListener() {
+
+        firebase.getReference().child("eventos").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 puntos.removeAll(puntos);
@@ -40,7 +39,9 @@ public class RecyclerViewIncial extends AppCompatActivity {
                     Punto punto=snapshot.getValue(Punto.class);
                     puntos.add(punto);
                 }
+                adapter= new AdaptadorRV(puntos);
                 adapter.notifyDataSetChanged();
+                rv.setAdapter(adapter);
             }
 
             @Override
