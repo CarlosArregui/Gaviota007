@@ -1,26 +1,28 @@
 package com.example.carre.gaviota007;
 
 public class Punto {
-    private String nombre, fecha;
+    private String creador, tipo;
 
-    public Punto(String nombre, String fecha) {
-        this.nombre = nombre;
-        this.fecha = fecha;
+    public Punto(String creador, String tipo) {
+        this.creador = creador;
+        this.tipo = tipo;
+    }
+    public Punto(){
+
+    }
+    public String getCreador() {
+        return creador;
     }
 
-    public String getNombre() {
-        return nombre;
+    public void setCreador(String creador) {
+        this.creador = creador;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public String getTipo() {
+        return tipo;
     }
 
-    public String getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 }

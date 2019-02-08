@@ -29,8 +29,8 @@ public class AdaptadorRV extends RecyclerView.Adapter<AdaptadorRV.ListaPuntosHol
     @Override
     public void onBindViewHolder(@NonNull ListaPuntosHolder listaPuntosHolder, int i) {
         Punto punto =lista_puntos_recy.get(i);
-        listaPuntosHolder.tv_nombre.setText(punto.getNombre());
-        listaPuntosHolder.tv_fecha.setText(punto.getFecha());
+        listaPuntosHolder.tv_creador.setText(punto.getCreador());
+        listaPuntosHolder.tv_tipo.setText(punto.getTipo());
     }
 
     @Override
@@ -39,13 +39,13 @@ public class AdaptadorRV extends RecyclerView.Adapter<AdaptadorRV.ListaPuntosHol
     }
 
     public static class ListaPuntosHolder extends RecyclerView.ViewHolder{
-    TextView tv_nombre, tv_fecha;
+    TextView tv_creador, tv_tipo;
     ImageView iv_imagen;
 
         public ListaPuntosHolder(@NonNull View itemView) {
             super(itemView);
-            tv_nombre=itemView.findViewById(R.id.tv_recy_nombre);
-            tv_fecha=itemView.findViewById(R.id.tv_recy_fecha);
+            tv_creador=itemView.findViewById(R.id.tv_recy_creador);
+            tv_tipo=itemView.findViewById(R.id.tv_recy_tipo);
 
 
         }
