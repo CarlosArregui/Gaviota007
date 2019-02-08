@@ -129,7 +129,11 @@ public class Registro extends AppCompatActivity {
                                 String clave = usuario;
                                 bbdd.child(clave).setValue(u);
                                 Toast.makeText(Registro.this, "Cuenta creada", Toast.LENGTH_LONG).show();
+                                //Apertura ventana principal despues de sign up
 
+                                final Intent log = new Intent(contexto,RecyclerViewIncial.class);
+
+                                        startActivity(log);
 
                             }
                         }

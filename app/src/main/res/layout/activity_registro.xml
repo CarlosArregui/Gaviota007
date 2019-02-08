@@ -26,13 +26,12 @@
         android:inputType="textPersonName"
         android:maxLines="1"
         android:padding="15dp"
-        android:text="jorge"
         android:textColor="@color/divider"
         android:textColorHighlight="@color/colorPrimaryDark"
         android:textColorHint="@color/divider" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/etEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -43,12 +42,12 @@
         android:inputType="textPersonName"
         android:maxLines="1"
         android:padding="15dp"
-        android:text="@gmail.com"
         android:textColor="@color/divider"
         android:textColorHighlight="@color/colorPrimaryDark"
         android:textColorHint="@color/divider" />
 
     <EditText
+        android:id="@+id/etPass1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -59,24 +58,22 @@
         android:inputType="textPassword"
         android:maxLines="1"
         android:padding="15dp"
-        android:text="123456"
         android:textColor="@color/divider"
         android:textColorHighlight="@color/icons"
         android:textColorHint="@color/divider" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/etPassConfirm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:background="@drawable/shapeemail"
         android:drawableLeft="@drawable/ic_lock_black_24dp"
         android:drawablePadding="10dp"
-        android:hint="Password"
+        android:hint=" Confirm password"
         android:inputType="textPassword"
         android:maxLines="1"
         android:padding="15dp"
-        android:text="123456"
         android:textColor="@color/divider"
         android:textColorHighlight="@color/icons"
         android:textColorHint="@color/divider" />
@@ -87,6 +84,7 @@
         android:orientation="horizontal"/>
 
     <Button
+        android:id="@+id/btnRegistrar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
