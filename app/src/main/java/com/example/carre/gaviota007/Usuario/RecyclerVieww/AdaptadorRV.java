@@ -1,4 +1,4 @@
-package com.example.carre.gaviota007;
+package com.example.carre.gaviota007.Usuario.RecyclerVieww;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -7,6 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.carre.gaviota007.Punto;
+import com.example.carre.gaviota007.R;
 
 import java.util.List;
 

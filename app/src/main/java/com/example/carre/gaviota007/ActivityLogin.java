@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.carre.gaviota007.Usuario.RecyclerVieww.RecyclerViewIncial;
+
 public class ActivityLogin extends AppCompatActivity {
     Button sign_up,log_in;
     @Override
@@ -27,7 +29,7 @@ public class ActivityLogin extends AppCompatActivity {
 
         //Apertura ventana principal despues de log in
         log_in =(Button)findViewById(R.id.log_in);
-        final Intent log = new Intent(this,RecyclerViewIncial.class);
+        final Intent log = new Intent(this, RecyclerViewIncial.class);
         View.OnClickListener inicio = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
