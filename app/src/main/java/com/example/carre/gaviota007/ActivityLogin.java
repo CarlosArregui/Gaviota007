@@ -13,6 +13,7 @@ public class ActivityLogin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         getSupportActionBar().hide();
+        
 
         sign_up =(Button)findViewById(R.id.sign_up);
         final Intent I = new Intent(this,Registro.class);
