@@ -1,13 +1,19 @@
 package com.example.carre.gaviota007;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Layout;
+import android.text.SpannableString;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -37,10 +43,11 @@ import com.google.firebase.auth.GoogleAuthProvider;
 public class ActivityLogin extends AppCompatActivity {
 
     //Atributos de la clase
-
+    private Context context;
     private Button sign_up,log_in;
     private EditText emailLog;
     private EditText passLog;
+    private TextView passforget;
     private LinearLayout layoutSnack;
     private SignInButton signInButton;
     private GoogleSignInClient mGoogleSignInClient;
@@ -58,13 +65,13 @@ public class ActivityLogin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         getSupportActionBar().hide();
-
+        context=this;
         layoutSnack =(LinearLayout)findViewById(R.id.layout_login);
         emailLog=(EditText)findViewById(R.id.etLog_email);
         passLog=(EditText)findViewById(R.id.etLog_pass);
         sign_up =(Button)findViewById(R.id.sign_up);
         log_in =(Button)findViewById(R.id.log_in);
-
+        passforget=(TextView)findViewById(R.id.tvPassForget);
         //Este botón esta destinado al inicio de sesión de google
 
         signInButton = findViewById(R.id.signInButton);
@@ -97,6 +104,11 @@ public class ActivityLogin extends AppCompatActivity {
             public void onClick(View v) {
                 LogearUsuario();
             }
+        });
+        passforget.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    alertDialog();            }
         });
 
         /*
@@ -226,5 +238,36 @@ public class ActivityLogin extends AppCompatActivity {
         snackbar.show();
     }
 
+    private void alertDialog(){
+        AlertDialog.Builder dialog=new AlertDialog.Builder(this);
+        LayoutInflater inflater=this.getLayoutInflater();
+        final View dialogView=inflater.inflate(R.layout.alert_dialog_passforget, null);
+        dialog.setView(dialogView);
+        final EditText editText_passForget=(EditText)dialogView.findViewById(R.id.et_insertemail);
 
+        final Button boton_enviarforget=(Button)dialogView.findViewById(R.id.btn_pass);
+        boton_enviarforget.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String stringEmailForget=editText_passForget.getText().toString().trim();
+                FirebaseAuth auth = FirebaseAuth.getInstance();
+
+                auth.sendPasswordResetEmail(stringEmailForget)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    // do something when mail was sent successfully.
+                                } else {
+                                    // ...
+                                }
+                            }
+                        });
+
+            }
+        });
+
+        AlertDialog b=dialog.create();
+        b.show();
+    }
 }
