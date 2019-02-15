@@ -1,12 +1,18 @@
 package com.example.carre.gaviota007;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.carre.gaviota007.Usuario.RecyclerVieww.RecyclerViewIncial;
@@ -24,63 +30,147 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+/**
+ * Activity de inicio de sesión.
+ */
+
 public class ActivityLogin extends AppCompatActivity {
-    Button sign_up,log_in;
+
+    //Atributos de la clase
+
+    private Button sign_up,log_in;
+    private EditText emailLog;
+    private EditText passLog;
+    private LinearLayout layoutSnack;
+    private SignInButton signInButton;
     private GoogleSignInClient mGoogleSignInClient;
-    private static final int RC_SIGN_IN = 9001;
     private FirebaseAuth mAuth;
     private  String idCliente;
-    private SignInButton signInButton;
+    private static final int RC_SIGN_IN = 9001;
+
+    /*
+     * En el onCreate inicializamos los atributos, añadimos los listener de los botones y otras cosas
+     * de firebase.
+     */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         getSupportActionBar().hide();
-        mAuth = FirebaseAuth.getInstance();
-        //Apertura ventana registro
+
+        layoutSnack =(LinearLayout)findViewById(R.id.layout_login);
+        emailLog=(EditText)findViewById(R.id.etLog_email);
+        passLog=(EditText)findViewById(R.id.etLog_pass);
         sign_up =(Button)findViewById(R.id.sign_up);
+        log_in =(Button)findViewById(R.id.log_in);
+
+        //Este botón esta destinado al inicio de sesión de google
+
+        signInButton = findViewById(R.id.signInButton);
+        signInButton.setSize(SignInButton.SIZE_WIDE);
+        signInButton.setColorScheme(SignInButton.COLOR_DARK);
+
+        /*
+         * mAuth es el atributo de Firebase destinado a la autentificación.
+         * idCliente es el id que tiene el proyecto destinado a la autentificación con google. (No confundir con las demás IDs)
+         */
+
+        mAuth = FirebaseAuth.getInstance();
+        idCliente="309577478544-ap1gfufh3aqa6k7m7lb1sl5lcdce531q.apps.googleusercontent.com";
+
         final Intent I = new Intent(this,Registro.class);
-        View.OnClickListener registro = new View.OnClickListener() {
+        sign_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(I);
             }
-        };
-        sign_up.setOnClickListener(registro);
-
-        //Apertura ventana principal despues de log in
-        log_in =(Button)findViewById(R.id.log_in);
-        final Intent log = new Intent(this, RecyclerViewIncial.class);
-        View.OnClickListener inicio = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(log);
-            }
-        };
-        log_in.setOnClickListener(inicio);
-        idCliente="309577478544-ap1gfufh3aqa6k7m7lb1sl5lcdce531q.apps.googleusercontent.com";
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(idCliente)
-                .requestEmail()
-                .build();
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-
-        signInButton = findViewById(R.id.signInButton);
-
-        signInButton.setSize(SignInButton.SIZE_WIDE);
-
-        signInButton.setColorScheme(SignInButton.COLOR_DARK);
-
+        });
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 signIn();
             }
         });
+        log_in.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LogearUsuario();
+            }
+        });
+
+        /*
+         * Estas lineas obtienen un token del idCliente y el correo de tu cuenta de google.
+         */
+
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(idCliente)
+                .requestEmail()
+                .build();
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
+
+
+
     }
+
+    /**
+     * El método de LogearUsuario() obtiene los Strings ingresados en el campo de email y pass para poder realizar el logeo.
+     */
+    private void LogearUsuario() {
+
+        // El .trim es para eliminar espacios al principio y al final de la palabra
+
+        String correo=emailLog.getText().toString().trim();
+        String contra=passLog.getText().toString().trim();
+
+        /*
+         * Si el campo de correo o de contraseña están vacios llaman al método snackbar() que crea un
+         * snackbar para avisar al usuario.
+         */
+
+        if(TextUtils.isEmpty(correo)){
+            snackbar("Ingresa un correo");
+            return;
+        }
+        if(TextUtils.isEmpty(contra)){
+            snackbar("Ingresa una contraseña");
+            return;
+        }
+
+        /*
+         * mAuth llama al metodo signInWithEmailAndPassword() donde se pasan como parametros el correo
+         * y la contraseña. Una vez hecho se comprueban los datos que estén en Firebase. Se crea un objeto tipo
+         * FirebaseUser que coge el actual usuario que esta intentando entrar, si el correo enviado está verificado
+         * se finaliza con exito el log y se pasa al siguiente activity.
+         */
+
+        mAuth.signInWithEmailAndPassword(correo, contra)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        FirebaseUser user=mAuth.getCurrentUser();
+                        if (!user.isEmailVerified()) {
+                            snackbar("No has verificado el correo");
+                        }else{
+                            if (task.isSuccessful()) {
+
+
+
+                            } else{
+                                snackbar("No has ingresado los datos correctamente.");
+                            }
+                        }
+                    }
+                });
+    }
+    /*
+     * En este metodo se crea un Intent y llama al predefinido de google para visualizar tus cuentas y lo inicializa
+     */
+
     private void signIn(){
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-        //Intent intent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
+
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
@@ -88,29 +178,23 @@ public class ActivityLogin extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+
         if (requestCode == RC_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
-                // Google Sign In was successful, authenticate with Firebase
+
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 firebaseAuthWithGoogle(account);
             } catch (ApiException e) {
-                // Google Sign In failed, update UI appropriately
+
                 Toast.makeText(ActivityLogin.this,"Fallo", Toast.LENGTH_LONG).show();
                 Log.v("ERROR", e.getMessage()+" "+e.getLocalizedMessage());
-                // ...
+
             }
         }
     }
 
 
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-
-    }
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
 
@@ -120,14 +204,11 @@ public class ActivityLogin extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Toast.makeText(ActivityLogin.this,"Log aceptado", Toast.LENGTH_LONG).show();
-                            FirebaseUser user = mAuth.getCurrentUser();
+
 
                         } else {
-                            // If sign in fails, display a message to the user.
 
-                            Toast.makeText(ActivityLogin.this,"Log denegado", Toast.LENGTH_LONG).show();
+                           snackbar("Log de Google denegado");
                         }
 
                         // ...
@@ -136,6 +217,14 @@ public class ActivityLogin extends AppCompatActivity {
     }
 
 
+    private void snackbar(String message){
+        final Snackbar snackbar = Snackbar
+                .make(layoutSnack, message, Snackbar.LENGTH_LONG);
+        View snackView=snackbar.getView();
+        TextView textView=snackView.findViewById(android.support.design.R.id.snackbar_text);
+        textView.setTextColor(Color.YELLOW);
+        snackbar.show();
+    }
 
 
 }
