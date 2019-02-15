@@ -60,41 +60,5 @@ public class RecyclerViewIncial extends AppCompatActivity {
             }
         });
 
-        rv.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
-            @Override
-            public boolean onInterceptTouchEvent(@NonNull RecyclerView recyclerView, @NonNull MotionEvent motionEvent) {
-
-                return false;
-            }
-
-            @Override
-            public void onTouchEvent(@NonNull RecyclerView recyclerView, @NonNull MotionEvent motionEvent) {
-                AlertDialog.Builder constructor= new AlertDialog.Builder(contexto);
-                constructor.setTitle("Información Punto");
-                LayoutInflater inflador=LayoutInflater.from(contexto);
-                final View vista=inflador.inflate(R.layout.alert_di_recy,null);
-                constructor.setView(vista);
-                constructor.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Log.d("ALERT","has clicado aceptar");
-                    }
-                });
-                constructor.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Log.d("ALERT","has clicado cancelar");
-
-                    }
-                });
-                AlertDialog alert=constructor.create();
-                alert.show();
-            }
-
-            @Override
-            public void onRequestDisallowInterceptTouchEvent(boolean b) {
-
-            }
-        });
     }
 }
