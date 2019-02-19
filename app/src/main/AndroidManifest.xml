@@ -22,7 +22,6 @@
             android:name=".ActivityLogin"
             android:parentActivityName=".SplashScreen"
             android:screenOrientation="portrait" />
-        <activity android:name=".MainActivity" />
         <activity
             android:name=".SplashScreen"
             android:screenOrientation="portrait">
