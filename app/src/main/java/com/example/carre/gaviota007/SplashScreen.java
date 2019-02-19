@@ -15,7 +15,8 @@ public class SplashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
         getSupportActionBar().hide();
-        ImageView imagen = (ImageView)findViewById(R.id.imagen);
+        //Splash Screen
+        ImageView imagen = findViewById(R.id.imagen);
         Animation myanim = AnimationUtils.loadAnimation(this, R.anim.gaviotaanim);
 
         imagen.startAnimation(myanim);

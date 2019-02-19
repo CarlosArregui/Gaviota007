@@ -45,6 +45,8 @@ public class Registro extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //Paantalla de registro
         setContentView(R.layout.activity_registro);
         getSupportActionBar().hide();
         FirebaseApp.initializeApp(this);
@@ -123,14 +125,17 @@ public class Registro extends AppCompatActivity {
                             if (task.isSuccessful()) {
 
                                 bbdd = FirebaseDatabase.getInstance().getReference("usuarios");
-                                Usuario u = new Usuario();
+                              Usuario u = new Usuario();
                                 u.setCorreo(correo);
                                 u.setNombre(usuario);
-
                                 String clave = usuario;
                                 bbdd.child(clave).setValue(u);
                                 Toast.makeText(Registro.this, "Cuenta creada", Toast.LENGTH_LONG).show();
+                                //Apertura ventana principal despues de sign up
 
+                                final Intent log = new Intent(contexto, RecyclerViewIncial.class);
+
+                                        startActivity(log);
 
                             }
                         }
