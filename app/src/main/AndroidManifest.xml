@@ -14,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Usuario.RecyclerVieww.RecyclerViewIncial"></activity>
+        <activity android:name=".RecyclerViewIncial"></activity>
         <activity
             android:name=".Registro"
             android:screenOrientation="portrait" />
