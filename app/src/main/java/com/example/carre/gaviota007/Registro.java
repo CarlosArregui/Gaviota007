@@ -123,7 +123,10 @@ public class Registro extends AppCompatActivity {
                             if (task.isSuccessful()) {
 
                                 bbdd = FirebaseDatabase.getInstance().getReference("usuarios");
-                                Usuario u = new Usuario(correo, contra);
+                                Usuario u = new Usuario();
+                                u.setCorreo(correo);
+                                u.setNombre(usuario);
+
                                 String clave = usuario;
                                 bbdd.child(clave).setValue(u);
                                 Toast.makeText(Registro.this, "Cuenta creada", Toast.LENGTH_LONG).show();

@@ -3,21 +3,26 @@ package com.example.carre.gaviota007.Usuario;
 import java.util.Date;
 
 public class Evento {
-    int id;
+
     String localizacion;
-    Date fecha;
+    String fecha;
     String titulo;
     String descripcion;
     String creador;
     int participantes;
-    int tipo;
+    String tipo;
 
-    public int getId() {
-        return id;
+    public Evento(String localizacion, String fecha, String titulo, String descripcion, String creador, int participantes, String tipo) {
+        this.localizacion = localizacion;
+        this.fecha = fecha;
+        this.titulo = titulo;
+        this.descripcion = descripcion;
+        this.creador = creador;
+        this.participantes = participantes;
+        this.tipo = tipo;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public Evento() {
     }
 
     public String getLocalizacion() {
@@ -28,11 +33,11 @@ public class Evento {
         this.localizacion = localizacion;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
@@ -68,11 +73,11 @@ public class Evento {
         this.participantes = participantes;
     }
 
-    public int getTipo() {
+    public String getTipo() {
         return tipo;
     }
 
-    public void setTipo(int tipo) {
+    public void setTipo(String tipo) {
         this.tipo = tipo;
     }
 }
