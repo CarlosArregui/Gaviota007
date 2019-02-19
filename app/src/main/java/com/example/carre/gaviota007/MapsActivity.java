@@ -14,12 +14,16 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.carre.gaviota007.Evento.Evento;
 import com.google.android.gms.maps.CameraUpdate;
@@ -43,7 +47,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     double lng = 0.0;
     LocationManager locationManager;
     Dialog customDialog = null;
-
+    ImageButton imagen;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,6 +92,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     private void sacarAlertDialog(final String latLng) {
+
+
         // con este tema personalizado evitamos los bordes por defecto
         customDialog = new Dialog(this,R.style.Theme_Dialog_Translucent);
         //deshabilitamos el título por defecto
@@ -96,6 +102,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         customDialog.setCancelable(false);
         //establecemos el contenido de nuestro dialog
         customDialog.setContentView(R.layout.alert);
+
+         imagen = customDialog.findViewById(R.id.bt_imagen);
+
+        View.OnClickListener entrar = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                registerForContextMenu(v);
+                openContextMenu(v);
+                unregisterForContextMenu(v);
+            }
+        };
+        imagen.setOnClickListener(entrar);
 
         final Intent I = new Intent(this,Principal.class);
 
@@ -120,6 +138,41 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         });
         customDialog.show();
+    }
+
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        getMenuInflater().inflate(R.menu.example_menu, menu);
+        MenuItem.OnMenuItemClickListener oyente=new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                Log.v("clicado ",""+item.getItemId());
+                onContextItemSelected(item);
+                return false;
+            }
+        };
+            for (int i=0; i<menu.size(); i++)
+            {
+                menu.getItem(i).setOnMenuItemClickListener(oyente);
+            }
+
+    }
+
+
+    public boolean onContextItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.option_1:
+                imagen.setImageResource(R.drawable.papelera);
+                return true;
+            case R.id.option_2:
+                imagen.setImageResource(R.drawable.ladron);
+                return true;
+            case R.id.option_3:
+                imagen.setImageResource(R.drawable.medusa);
+                return true;
+            default:
+                return super.onContextItemSelected(item);
+        }
     }
 
     private void agregegarMarcador(double lat, double lng) {

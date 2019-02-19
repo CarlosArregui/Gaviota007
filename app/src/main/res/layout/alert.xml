@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/dialog_container"
@@ -15,8 +16,6 @@
         android:layout_margin="2dp"
         android:padding="5dp"
         android:layout_marginLeft="5dp"
-        android:background="@drawable/borde_redondo"
-        android:inputType="textPersonName"
         android:hint="Titulo"/>
 
     <LinearLayout
@@ -25,13 +24,14 @@
         android:layout_weight="0"
         android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="100dp"
+        <ImageButton
+            android:id="@+id/bt_imagen"
+            android:layout_width="104dp"
             android:layout_height="match_parent"
             android:layout_weight="0"
-            android:padding="3dp"
-            app:srcCompat="@drawable/plus" />
+            android:onClick="openContextMenu"
+            android:background="@android:color/transparent"
+            android:src="@drawable/mas" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -47,9 +47,7 @@
                 android:ems="10"
                 android:layout_margin="2dp"
                 android:padding="5dp"
-                android:background="@drawable/borde_redondo"
-                android:inputType="textPersonName"
-                android:hint="Titulo"/>
+                android:hint="DD/MM/YYYY"/>
 
             <EditText
                 android:id="@+id/editText6"
@@ -59,9 +57,7 @@
                 android:padding="5dp"
                 android:layout_margin="2dp"
                 android:ems="10"
-                android:background="@drawable/borde_redondo"
-                android:inputType="date"
-                android:hint="DD/MM/YYYY"/>
+                android:hint="00:00"/>
         </LinearLayout>
 
     </LinearLayout>
@@ -74,8 +70,7 @@
         android:ems="10"
         android:layout_margin="2dp"
         android:inputType="textMultiLine"
-        android:hint="Descripción"
-        android:background="@drawable/borde_redondo"/>
+        android:hint="Descripción"/>
 
     <LinearLayout
         android:id="@+id/botonera"
@@ -89,9 +84,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/dialog_button_cancelar"
+            android:background="@drawable/dialog_button_selector"
             android:text="aceptar"
-            android:textColor="@color/divider" />
+            android:textColor="@color/primary" />
 
         <Button
             android:id="@+id/cancelar"
@@ -99,9 +94,9 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_weight="1"
-            android:background="@drawable/dialog_button_selector"
+            android:background="@drawable/dialog_button_cancelar"
             android:text="cancelar"
-            android:textColor="@color/secondary_text" />
+            android:textColor="@color/icons" />
     </LinearLayout>
 
 
