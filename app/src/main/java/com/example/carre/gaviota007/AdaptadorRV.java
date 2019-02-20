@@ -1,4 +1,4 @@
-package com.example.carre.gaviota007.Usuario.RecyclerVieww;
+package com.example.carre.gaviota007;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -12,9 +12,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.example.carre.gaviota007.Punto;
-import com.example.carre.gaviota007.R;
 
 import java.util.List;
 

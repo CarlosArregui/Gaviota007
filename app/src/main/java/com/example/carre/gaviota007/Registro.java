@@ -12,8 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.carre.gaviota007.Evento.Usuario;
-import com.example.carre.gaviota007.Usuario.RecyclerVieww.RecyclerViewIncial;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
@@ -121,7 +120,9 @@ public class Registro extends AppCompatActivity {
                             if (task.isSuccessful()) {
 
                                 bbdd = FirebaseDatabase.getInstance().getReference("usuarios");
-                                Usuario u = new Usuario(correo, contra);
+                              Usuario u = new Usuario();
+                                u.setCorreo(correo);
+                                u.setNombre(usuario);
                                 String clave = usuario;
                                 bbdd.child(clave).setValue(u);
                                 Toast.makeText(Registro.this, "Cuenta creada", Toast.LENGTH_LONG).show();

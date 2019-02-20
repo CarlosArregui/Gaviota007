@@ -1,4 +1,4 @@
-package com.example.carre.gaviota007.Usuario.RecyclerVieww;
+package com.example.carre.gaviota007;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -14,6 +14,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 
+import com.example.carre.gaviota007.AdaptadorRV;
 import com.example.carre.gaviota007.Punto;
 import com.example.carre.gaviota007.R;
 import com.google.firebase.database.DataSnapshot;
