@@ -146,15 +146,6 @@ public class Registro extends AppCompatActivity {
                         }
                     });
         }
-
-
-
-
-
-
-
-
-
     }
 
     private void snackbar(String message){
