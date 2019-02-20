@@ -49,7 +49,7 @@ public class ActivityLogin extends AppCompatActivity {
 
         //Apertura ventana principal despues de log in
         log_in =(Button)findViewById(R.id.log_in);
-        final Intent log = new Intent(this, RecyclerViewIncial.class);
+        final Intent log = new Intent(this, Principal.class);
         View.OnClickListener inicio = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
