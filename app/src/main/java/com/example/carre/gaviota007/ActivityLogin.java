@@ -23,7 +23,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.carre.gaviota007.Usuario.RecyclerVieww.RecyclerViewIncial;
+
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -39,7 +39,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
-import io.paperdb.Paper;
+import java.io.IOException;
+
 
 /**
  * Activity de inicio de sesión.
@@ -198,7 +199,7 @@ public class ActivityLogin extends AppCompatActivity {
             editor.putString("pref_pass", contra);
             editor.putBoolean("checkbox", boolIsCheked);
             editor.apply();
-            Toast.makeText(ActivityLogin.this, "Guardado", Toast.LENGTH_LONG).show();
+
         }else{
             mPrefs.edit().clear().apply();
         }
@@ -213,18 +214,27 @@ public class ActivityLogin extends AppCompatActivity {
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        FirebaseUser user=mAuth.getCurrentUser();
-                        if (!user.isEmailVerified()) {
-                            snackbar("No has verificado el correo");
-                        }else{
-                            if (task.isSuccessful()) {
-                                snackbar("Logeado");
+                        try{
+                            FirebaseUser user=mAuth.getCurrentUser();
+                            if (!user.isEmailVerified()) {
+                                snackbar("No has verificado el correo");
+                            }else{
+                                if (task.isSuccessful()) {
+                                    Intent I = new Intent(context,Principal.class);
+                                    startActivity(I);
+                                    snackbar("Logeado");
 
 
-                            } else{
-                                snackbar("No has ingresado los datos correctamente.");
+                                } else{
+                                    snackbar("No has ingresado los datos correctamente.");
+                                }
                             }
+                        }catch (Exception e){
+                            snackbar("Me huele a mi que la cuenta no existe");
                         }
+
+
+
                     }
                 });
         emailLog.getText().clear();
@@ -270,7 +280,8 @@ public class ActivityLogin extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-
+                            Intent I = new Intent(context,Principal.class);
+                            startActivity(I);
 
                         } else {
 
