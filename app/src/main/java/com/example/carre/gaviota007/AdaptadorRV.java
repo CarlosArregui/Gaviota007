@@ -18,11 +18,11 @@ import java.util.List;
 
 public class AdaptadorRV extends RecyclerView.Adapter<AdaptadorRV.ListaPuntosHolder> implements View.OnClickListener {
     @NonNull
-    List<Punto> lista_puntos_recy;
+    List<Evento> lista_eventos_recy;
     Context contexto;
     private View.OnClickListener listener;
-    public AdaptadorRV(List<Punto> lista_puntos) {
-        this.lista_puntos_recy=lista_puntos;
+    public AdaptadorRV(List<Evento> lista_puntos) {
+        this.lista_eventos_recy=lista_puntos;
     }
 
 
@@ -37,16 +37,16 @@ public class AdaptadorRV extends RecyclerView.Adapter<AdaptadorRV.ListaPuntosHol
 
     @Override
     public void onBindViewHolder(@NonNull ListaPuntosHolder listaPuntosHolder, int i) {
-        Punto punto =lista_puntos_recy.get(i);
-        listaPuntosHolder.tv_creador.setText(punto.getCreador());
-        listaPuntosHolder.tv_tipo.setText(punto.getTipo());
+        Evento evento =lista_eventos_recy.get(i);
+        listaPuntosHolder.tv_creador.setText(evento.getCreador());
+        listaPuntosHolder.tv_tipo.setText(evento.getLocalizacion());
         listaPuntosHolder.const_lay.setOnClickListener(this);
         
     }
 
     @Override
     public int getItemCount() {
-        return lista_puntos_recy.size();
+        return lista_eventos_recy.size();
     }
 
     @Override

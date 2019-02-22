@@ -27,7 +27,7 @@ import java.util.List;
 
 public class Principal extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     RecyclerView rv;
-    List<Punto> puntos;
+    List<Evento> eventos;
     AdaptadorRV adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,7 @@ public class Principal extends AppCompatActivity implements NavigationView.OnNav
 
         rv= findViewById(R.id.recycler_);
         rv.setLayoutManager(new LinearLayoutManager(this));
-        puntos= new ArrayList<>();
+        eventos= new ArrayList<>();
         FirebaseDatabase firebase= FirebaseDatabase.getInstance();
 
 
@@ -44,12 +44,12 @@ public class Principal extends AppCompatActivity implements NavigationView.OnNav
             @Override
             //saca datos y los catualiza en la vista
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                puntos.removeAll(puntos);
+                eventos.removeAll(eventos);
                 for(DataSnapshot snapshot:dataSnapshot.getChildren()){
-                    Punto punto=snapshot.getValue(Punto.class);
-                    puntos.add(punto);
+                    Evento punto=snapshot.getValue(Evento.class);
+                    eventos.add(punto);
                 }
-                adapter= new AdaptadorRV(puntos);
+                adapter= new AdaptadorRV(eventos);
                 adapter.notifyDataSetChanged();
                 rv.setAdapter(adapter);
             }
