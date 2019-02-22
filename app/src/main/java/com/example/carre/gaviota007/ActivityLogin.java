@@ -282,6 +282,7 @@ public class ActivityLogin extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Intent I = new Intent(context,Principal.class);
                             startActivity(I);
+                            finish();
 
                         } else {
 
