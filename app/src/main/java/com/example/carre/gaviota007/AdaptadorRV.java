@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -39,9 +40,14 @@ public class AdaptadorRV extends RecyclerView.Adapter<AdaptadorRV.ListaPuntosHol
         Punto punto =lista_puntos_recy.get(i);
         listaPuntosHolder.tv_creador.setText(punto.getCreador());
         listaPuntosHolder.tv_tipo.setText(punto.getTipo());
-        listaPuntosHolder.btn_abrir.setOnClickListener(this);
-
+        listaPuntosHolder.const_lay.setOnClickListener(this);
     }
+
+    @Override
+    public int getItemCount() {
+        return lista_puntos_recy.size();
+    }
+
     @Override
     public void onClick(View v) {
         AlertDialog.Builder constructor= new AlertDialog.Builder(v.getContext());
@@ -65,24 +71,17 @@ public class AdaptadorRV extends RecyclerView.Adapter<AdaptadorRV.ListaPuntosHol
         AlertDialog alert=constructor.create();
         alert.show();
     }
-    @Override
-    public int getItemCount() {
-        return lista_puntos_recy.size();
-    }
-
-
-
 
     public static class ListaPuntosHolder extends RecyclerView.ViewHolder{
     TextView tv_creador, tv_tipo;
     Button btn_abrir;
-
+    ConstraintLayout const_lay;
         public ListaPuntosHolder(@NonNull View itemView) {
             super(itemView);
             tv_creador=itemView.findViewById(R.id.tv_recy_creador);
             tv_tipo=itemView.findViewById(R.id.tv_recy_tipo);
-            btn_abrir=itemView.findViewById(R.id.btn_abrir_alert);
 
+            const_lay=(ConstraintLayout)itemView.findViewById(R.id.constraint_lay);
         }
     }
 }
