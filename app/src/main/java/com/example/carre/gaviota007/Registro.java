@@ -1,46 +1,48 @@
 package com.example.carre.gaviota007;
 
-import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
-import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.carre.gaviota007.Evento.Usuario;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+/**
+ * Este activity es el del registro
+ */
 public class Registro extends AppCompatActivity {
-    EditText email;
-    EditText pass,et_usuario;
-    EditText passConfirm;
-    Button registro;
+    private LinearLayout layoutSnack;
+    private EditText email;
+    private EditText pass,et_usuario;
+    private EditText passConfirm;
+    private Button registro;
+    private String correo;
+    private String contra;
+    private String usuario;
+    private Context contexto;
+    private Boolean no_repetido=false;
     private FirebaseAuth mAuth;
-    DatabaseReference bbdd;
-    String correo;
-    String contra;
-    String usuario;
-    Context contexto;
-    Boolean no_repetido=false;
+    private DatabaseReference bbdd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,9 +83,7 @@ public class Registro extends AppCompatActivity {
         }
         //confirmacion de contraseña
         if (!contra.equals(contraConfirm)) {
-
-            Toast.makeText(Registro.this, "Las contraseñas no son iguales", Toast.LENGTH_LONG).show();
-
+            snackbar("Las contraseñas no son iguales");
             return;
         }
 
@@ -98,7 +98,7 @@ public class Registro extends AppCompatActivity {
                         no_repetido=true;
                     }
                     else{
-                        Toast.makeText(Registro.this, "El usuario ya existe", Toast.LENGTH_LONG).show();
+                        snackbar("El usuario ya existe");
                     }
 
 
@@ -110,6 +110,7 @@ public class Registro extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
+                snackbar("Ha habido un error en la base de datos");
 
             }
 
@@ -123,33 +124,35 @@ public class Registro extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-
                                 bbdd = FirebaseDatabase.getInstance().getReference("usuarios");
                               Usuario u = new Usuario();
                                 u.setCorreo(correo);
                                 u.setNombre(usuario);
                                 String clave = usuario;
                                 bbdd.child(clave).setValue(u);
-                                Toast.makeText(Registro.this, "Cuenta creada", Toast.LENGTH_LONG).show();
-                                //Apertura ventana principal despues de sign up
+                                FirebaseUser user=mAuth.getCurrentUser();
+                                user.sendEmailVerification();
+                                final Intent loging = new Intent(contexto, ActivityLogin.class);
+                                startActivity(loging);
+                            }else{
+                                if(task.getException() instanceof FirebaseAuthUserCollisionException){
+                                    snackbar("El correo ya está en uso");
 
-                                final Intent log = new Intent(contexto, RecyclerViewIncial.class);
-
-                                        startActivity(log);
-
+                                }else{
+                                    snackbar("Oops... Algo ha salido mal");
+                                }
                             }
                         }
                     });
         }
-
-
-
-
-
-
-
-
-
     }
 
+    private void snackbar(String message){
+        final Snackbar snackbar = Snackbar
+                .make(layoutSnack, message, Snackbar.LENGTH_LONG);
+        View snackView=snackbar.getView();
+        TextView textView=snackView.findViewById(android.support.design.R.id.snackbar_text);
+        textView.setTextColor(Color.YELLOW);
+        snackbar.show();
+    }
 }
