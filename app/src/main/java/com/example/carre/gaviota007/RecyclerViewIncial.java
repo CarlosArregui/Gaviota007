@@ -44,6 +44,7 @@ public class RecyclerViewIncial extends AppCompatActivity {
 
         firebase.getReference().child("eventos").addValueEventListener(new ValueEventListener() {
             @Override
+            //saca datos y los catualiza en la vista
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 puntos.removeAll(puntos);
                 for(DataSnapshot snapshot:dataSnapshot.getChildren()){
