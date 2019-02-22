@@ -35,6 +35,9 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.w3c.dom.Text;
 
@@ -45,13 +48,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private Marker punto;
     double lat = 0.0;
     double lng = 0.0;
+    private String tipo="";
     LocationManager locationManager;
     Dialog customDialog = null;
     ImageButton imagen;
+    EditText et_titulo,et_fecha,et_hora,et_descripcion;
+    Context contexto;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+        contexto=this;
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -84,6 +93,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 if (latLng != null){
                     punto = mMap.addMarker(new MarkerOptions().position(latLng)
                             .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+
                     sacarAlertDialog(latLng.toString());
                 }
             }
@@ -103,7 +113,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //establecemos el contenido de nuestro dialog
         customDialog.setContentView(R.layout.alert);
 
-         imagen = customDialog.findViewById(R.id.bt_imagen);
+        //seteamos el registro del evento
+        imagen = customDialog.findViewById(R.id.btn_imagen);
+        et_descripcion=customDialog.findViewById(R.id.et_descripcion);
+        et_fecha=customDialog.findViewById(R.id.et_fecha);
+        et_hora=customDialog.findViewById(R.id.et_hora);
+        et_titulo=customDialog.findViewById(R.id.et_titulo);
+
+
 
         View.OnClickListener entrar = new View.OnClickListener() {
             @Override
@@ -117,17 +134,53 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         final Intent I = new Intent(this,Principal.class);
 
-        ((Button) customDialog.findViewById(R.id.aceptar)).setOnClickListener(new View.OnClickListener() {
+        ((Button) customDialog.findViewById(R.id.btn_aceptar)).setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view)
             {
-                customDialog.dismiss();
-                startActivity(I);
+                //si aceptamos, introduciremos los datos en firebase
+                String titulo=et_titulo.getText().toString();
+                String fecha=et_fecha.getText().toString();
+                String descripcion=et_descripcion.getText().toString();
+                String creador="wilxair";
+                String localizacion=punto.getPosition().toString().replace("lat/lng: (","").replace(")","");
+                Log.v("mensaje",localizacion+" "+tipo);
+                // tipo --> lo sacamos como string con palabras clave en el onContextItemSelected;
+                int participantes=0;
+
+                //verificamos que el usuario seleccione un tipo
+                if (tipo.equals("")){
+                    return;
+                }
+                else{
+                    FirebaseApp.initializeApp(contexto);
+
+                    //creamos el objeto evento
+                    Evento e=new Evento(localizacion,fecha,titulo,descripcion,creador,participantes,tipo);
+                    DatabaseReference bbdd = FirebaseDatabase.getInstance().getReference("eventos");
+                    DatabaseReference bbdd2 = FirebaseDatabase.getInstance().getReference("location");
+
+                    //generamos una clave para ese evento pero la guardamos para la tabla usuario(evento creados)
+                    String clave=bbdd.push().getKey();
+
+                    //insertamos el evento
+                    bbdd.child(clave).setValue(e);
+
+
+                    customDialog.dismiss();
+                    startActivity(I);
+                    finish();
+                }
+
+
+
+
+
             }
         });
 
-        ((Button) customDialog.findViewById(R.id.cancelar)).setOnClickListener(new View.OnClickListener() {
+        ((Button) customDialog.findViewById(R.id.btn_cancelar)).setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view)
@@ -162,12 +215,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public boolean onContextItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.option_1:
+                tipo="limpiar";
                 imagen.setImageResource(R.drawable.papelera);
                 return true;
             case R.id.option_2:
+                tipo="chorizos";
                 imagen.setImageResource(R.drawable.ladron);
                 return true;
             case R.id.option_3:
+                tipo="medusas";
                 imagen.setImageResource(R.drawable.medusa);
                 return true;
             default:
@@ -241,5 +297,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 0, locationListener);
         }*/
         locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 0, locationListener);
+    }
+
+    private void insertarEventos(){
+
     }
 }

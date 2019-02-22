@@ -8,15 +8,15 @@
     android:orientation="vertical" >
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/et_titulo"
         android:layout_width="match_parent"
         android:layout_height="47dp"
+        android:layout_margin="2dp"
+        android:layout_marginLeft="5dp"
         android:layout_weight="0"
         android:ems="10"
-        android:layout_margin="2dp"
-        android:padding="5dp"
-        android:layout_marginLeft="5dp"
-        android:hint="Titulo"/>
+        android:hint="Titulo"
+        android:padding="5dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,12 +25,12 @@
         android:orientation="horizontal">
 
         <ImageButton
-            android:id="@+id/bt_imagen"
+            android:id="@+id/btn_imagen"
             android:layout_width="104dp"
             android:layout_height="match_parent"
             android:layout_weight="0"
-            android:onClick="openContextMenu"
             android:background="@android:color/transparent"
+            android:onClick="openContextMenu"
             android:src="@drawable/mas" />
 
         <LinearLayout
@@ -40,37 +40,37 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/editText4"
+                android:id="@+id/et_fecha"
                 android:layout_width="match_parent"
                 android:layout_height="47dp"
+                android:layout_margin="2dp"
                 android:layout_weight="0"
                 android:ems="10"
-                android:layout_margin="2dp"
-                android:padding="5dp"
-                android:hint="DD/MM/YYYY"/>
+                android:hint="DD/MM/YYYY"
+                android:padding="5dp" />
 
             <EditText
-                android:id="@+id/editText6"
+                android:id="@+id/et_hora"
                 android:layout_width="match_parent"
                 android:layout_height="47dp"
-                android:layout_weight="0"
-                android:padding="5dp"
                 android:layout_margin="2dp"
+                android:layout_weight="0"
                 android:ems="10"
-                android:hint="00:00"/>
+                android:hint="00:00"
+                android:padding="5dp" />
         </LinearLayout>
 
     </LinearLayout>
 
     <EditText
-        android:id="@+id/editText10"
+        android:id="@+id/et_descripcion"
         android:layout_width="match_parent"
         android:layout_height="150dp"
+        android:layout_margin="2dp"
         android:layout_weight="0"
         android:ems="10"
-        android:layout_margin="2dp"
-        android:inputType="textMultiLine"
-        android:hint="Descripción"/>
+        android:hint="Descripción"
+        android:inputType="textMultiLine" />
 
     <LinearLayout
         android:id="@+id/botonera"
@@ -80,7 +80,7 @@
         android:layout_weight="0">
 
         <Button
-            android:id="@+id/aceptar"
+            android:id="@+id/btn_aceptar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -89,7 +89,7 @@
             android:textColor="@color/primary" />
 
         <Button
-            android:id="@+id/cancelar"
+            android:id="@+id/btn_cancelar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
