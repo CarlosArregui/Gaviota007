@@ -20,6 +20,7 @@ public class AdaptadorRV extends RecyclerView.Adapter<AdaptadorRV.ListaPuntosHol
     @NonNull
     List<Evento> lista_eventos_recy;
     Context contexto;
+    Evento evento;
     private View.OnClickListener listener;
     public AdaptadorRV(List<Evento> lista_puntos) {
         this.lista_eventos_recy=lista_puntos;
@@ -37,7 +38,7 @@ public class AdaptadorRV extends RecyclerView.Adapter<AdaptadorRV.ListaPuntosHol
 
     @Override
     public void onBindViewHolder(@NonNull ListaPuntosHolder listaPuntosHolder, int i) {
-        Evento evento =lista_eventos_recy.get(i);
+        evento =lista_eventos_recy.get(i);
         listaPuntosHolder.tv_creador.setText(evento.getCreador());
         listaPuntosHolder.tv_tipo.setText(evento.getLocalizacion());
         listaPuntosHolder.const_lay.setOnClickListener(this);
@@ -56,6 +57,20 @@ public class AdaptadorRV extends RecyclerView.Adapter<AdaptadorRV.ListaPuntosHol
         LayoutInflater inflador=LayoutInflater.from(v.getContext());
         final View vista=inflador.inflate(R.layout.alert_di_recy,null);
         constructor.setView(vista);
+        TextView tv_titulo= vista.findViewById(R.id.tv_titulo);
+        TextView tv_creador= vista.findViewById(R.id.tv_creador);
+        TextView tv_participantes= vista.findViewById(R.id.tv_participantes);
+        TextView tv_localizacion= vista.findViewById(R.id.tv_localizacion);
+        TextView tv_fecha_hora= vista.findViewById(R.id.tv_fecha_hora);
+        TextView tv_descripcion= vista.findViewById(R.id.tv_desc);
+
+        tv_titulo.setText(evento.getTitulo());
+        tv_creador.setText(evento.getCreador());
+        tv_participantes.setText(evento.getParticipantes());
+        tv_localizacion.setText(evento.getLocalizacion());
+        tv_fecha_hora.setText(evento.getFecha());
+        tv_descripcion.setText(evento.getDescripcion());
+
         constructor.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -75,6 +90,8 @@ public class AdaptadorRV extends RecyclerView.Adapter<AdaptadorRV.ListaPuntosHol
 
     public static class ListaPuntosHolder extends RecyclerView.ViewHolder{
     TextView tv_creador, tv_tipo;
+
+
     Button btn_abrir;
     ConstraintLayout const_lay;
         public ListaPuntosHolder(@NonNull View itemView) {

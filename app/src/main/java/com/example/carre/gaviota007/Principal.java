@@ -46,8 +46,8 @@ public class Principal extends AppCompatActivity implements NavigationView.OnNav
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 eventos.removeAll(eventos);
                 for(DataSnapshot snapshot:dataSnapshot.getChildren()){
-                    Evento punto=snapshot.getValue(Evento.class);
-                    eventos.add(punto);
+                    Evento evento=snapshot.getValue(Evento.class);
+                    eventos.add(evento);
                 }
                 adapter= new AdaptadorRV(eventos);
                 adapter.notifyDataSetChanged();
