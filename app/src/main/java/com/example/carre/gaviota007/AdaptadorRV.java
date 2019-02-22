@@ -30,7 +30,7 @@ public class AdaptadorRV extends RecyclerView.Adapter<AdaptadorRV.ListaPuntosHol
     public void onBindViewHolder(@NonNull ListaPuntosHolder listaPuntosHolder, int i) {
         Punto punto =lista_puntos_recy.get(i);
         listaPuntosHolder.tv_creador.setText(punto.getCreador());
-        listaPuntosHolder.tv_tipo.setText(punto.getTipo());
+        listaPuntosHolder.tv_tipo.setText(punto.getLocalizacion());
     }
 
     @Override

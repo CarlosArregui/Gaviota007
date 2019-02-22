@@ -143,7 +143,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 String titulo=et_titulo.getText().toString();
                 String fecha=et_fecha.getText().toString();
                 String descripcion=et_descripcion.getText().toString();
-                String creador="wilxair";
+                String creador="jorge";
                 String localizacion=punto.getPosition().toString().replace("lat/lng: (","").replace(")","");
                 Log.v("mensaje",localizacion+" "+tipo);
                 // tipo --> lo sacamos como string con palabras clave en el onContextItemSelected;
@@ -158,14 +158,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                     //creamos el objeto evento
                     Evento e=new Evento(localizacion,fecha,titulo,descripcion,creador,participantes,tipo);
+                    Punto p=new Punto(creador,localizacion);
                     DatabaseReference bbdd = FirebaseDatabase.getInstance().getReference("eventos");
                     DatabaseReference bbdd2 = FirebaseDatabase.getInstance().getReference("location");
+                    DatabaseReference bbdd3 = FirebaseDatabase.getInstance().getReference("usuarios").child("jorge").child("eventos_creados");
 
                     //generamos una clave para ese evento pero la guardamos para la tabla usuario(evento creados)
                     String clave=bbdd.push().getKey();
 
                     //insertamos el evento
                     bbdd.child(clave).setValue(e);
+                    bbdd2.child(clave).setValue(p);
+                    bbdd3.child(clave).setValue(true);
 
 
                     customDialog.dismiss();
