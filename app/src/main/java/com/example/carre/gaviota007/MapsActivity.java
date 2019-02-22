@@ -156,6 +156,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 else{
                     FirebaseApp.initializeApp(contexto);
 
+                    
                     //creamos el objeto evento
                     Evento e=new Evento(localizacion,fecha,titulo,descripcion,creador,participantes,tipo);
                     Punto p=new Punto(creador,localizacion);
