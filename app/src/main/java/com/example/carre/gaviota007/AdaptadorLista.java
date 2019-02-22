@@ -18,6 +18,7 @@ public class AdaptadorLista extends BaseAdapter {
 
     public AdaptadorLista(ArrayList<Evento> lista_madrid, Context contexto) {
         this.lista_evento = lista_madrid;
+        
         this.contexto = contexto;
     }
 
