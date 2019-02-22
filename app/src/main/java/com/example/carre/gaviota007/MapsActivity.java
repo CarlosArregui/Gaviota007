@@ -160,7 +160,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     Evento e=new Evento(localizacion,fecha,titulo,descripcion,creador,participantes,tipo);
                     Punto p=new Punto(creador,localizacion);
                     DatabaseReference bbdd = FirebaseDatabase.getInstance().getReference("eventos");
-                    DatabaseReference bbdd2 = FirebaseDatabase.getInstance().getReference("location");
+                    DatabaseReference bbdd2 = FirebaseDatabase.getInstance().getReference("puntos");
                     DatabaseReference bbdd3 = FirebaseDatabase.getInstance().getReference("usuarios").child("jorge").child("eventos_creados");
 
                     //generamos una clave para ese evento pero la guardamos para la tabla usuario(evento creados)
