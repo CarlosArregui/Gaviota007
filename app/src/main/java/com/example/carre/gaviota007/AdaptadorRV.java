@@ -41,6 +41,7 @@ public class AdaptadorRV extends RecyclerView.Adapter<AdaptadorRV.ListaPuntosHol
         listaPuntosHolder.tv_creador.setText(punto.getCreador());
         listaPuntosHolder.tv_tipo.setText(punto.getTipo());
         listaPuntosHolder.const_lay.setOnClickListener(this);
+        
     }
 
     @Override
