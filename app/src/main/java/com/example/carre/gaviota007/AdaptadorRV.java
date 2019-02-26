@@ -16,11 +16,11 @@ import android.widget.TextView;
 
 import java.util.List;
 //Comentar esta clase adaptador podria causar cambios en las leyes espacio-temporales de la fisica, asi que no lo hare.
-public class AdaptadorRV extends RecyclerView.Adapter<AdaptadorRV.ListaPuntosHolder> implements View.OnClickListener {
+public class AdaptadorRV extends RecyclerView.Adapter<AdaptadorRV.ListaPuntosHolder> implements InterfazClickRV {
     @NonNull
-    List<Evento> lista_eventos_recy;
+    static List<Evento> lista_eventos_recy;
     Context contexto;
-    Evento evento;
+    private static InterfazClickRV itemListener;
     private View.OnClickListener listener;
     public AdaptadorRV(List<Evento> lista_puntos) {
         this.lista_eventos_recy=lista_puntos;
@@ -31,17 +31,23 @@ public class AdaptadorRV extends RecyclerView.Adapter<AdaptadorRV.ListaPuntosHol
     public ListaPuntosHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View v= LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.rv_vista_add,viewGroup, false);
 
-        viewGroup.setOnClickListener(this);
+       // viewGroup.setOnClickListener(this);
         ListaPuntosHolder puntos = new ListaPuntosHolder(v);
         return puntos;
     }
+    View.OnClickListener oyente=new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+        }
+    };
 
     @Override
     public void onBindViewHolder(@NonNull ListaPuntosHolder listaPuntosHolder, int i) {
-        evento =lista_eventos_recy.get(i);
+        Evento evento =lista_eventos_recy.get(i);
         listaPuntosHolder.tv_creador.setText(evento.getCreador());
         listaPuntosHolder.tv_tipo.setText(evento.getLocalizacion());
-        listaPuntosHolder.const_lay.setOnClickListener(this);
+        listaPuntosHolder.i=i;
+       // listaPuntosHolder.const_lay.setOnClickListener(oyente);
         
     }
 
@@ -51,7 +57,39 @@ public class AdaptadorRV extends RecyclerView.Adapter<AdaptadorRV.ListaPuntosHol
     }
 
     @Override
-    public void onClick(View v) {
+    public void recyclerViewListClicked(View v, int position) {
+
+    }
+
+
+    public static class ListaPuntosHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    TextView tv_creador, tv_tipo;
+    int i;
+
+    Button btn_abrir;
+    ConstraintLayout const_lay;
+        public ListaPuntosHolder(@NonNull View itemView) {
+            super(itemView);
+            tv_creador=itemView.findViewById(R.id.tv_recy_creador);
+            tv_tipo=itemView.findViewById(R.id.tv_recy_tipo);
+
+            const_lay=(ConstraintLayout)itemView.findViewById(R.id.constraint_lay);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            sacarAlertDialog(lista_eventos_recy.get(this.getPosition()), v );
+
+        }
+    }
+    public static void sacarAlertDialog(Evento evento, View v)
+    {
+       // Log.v("clicado", "posciion:"+position);
+
+       // Evento evento=lista_eventos_recy.get(position);
+
+        Log.v("clicado","Clase:"+ v.getClass());
         AlertDialog.Builder constructor= new AlertDialog.Builder(v.getContext());
         constructor.setTitle("Información Punto");
         LayoutInflater inflador=LayoutInflater.from(v.getContext());
@@ -66,7 +104,8 @@ public class AdaptadorRV extends RecyclerView.Adapter<AdaptadorRV.ListaPuntosHol
 
         tv_titulo.setText(evento.getTitulo());
         tv_creador.setText(evento.getCreador());
-        tv_participantes.setText(evento.getParticipantes());
+        String participantes= Integer.toString(evento.getParticipantes());
+        tv_participantes.setText(participantes);
         tv_localizacion.setText(evento.getLocalizacion());
         tv_fecha_hora.setText(evento.getFecha());
         tv_descripcion.setText(evento.getDescripcion());
@@ -86,20 +125,5 @@ public class AdaptadorRV extends RecyclerView.Adapter<AdaptadorRV.ListaPuntosHol
         });
         AlertDialog alert=constructor.create();
         alert.show();
-    }
-
-    public static class ListaPuntosHolder extends RecyclerView.ViewHolder{
-    TextView tv_creador, tv_tipo;
-
-
-    Button btn_abrir;
-    ConstraintLayout const_lay;
-        public ListaPuntosHolder(@NonNull View itemView) {
-            super(itemView);
-            tv_creador=itemView.findViewById(R.id.tv_recy_creador);
-            tv_tipo=itemView.findViewById(R.id.tv_recy_tipo);
-
-            const_lay=(ConstraintLayout)itemView.findViewById(R.id.constraint_lay);
-        }
     }
 }
