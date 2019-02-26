@@ -2,6 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraint_lay"
     android:layout_width="match_parent"
     android:layout_height="100dp">
 
@@ -9,8 +10,8 @@
         android:id="@+id/tv_recy_creador"
         android:layout_width="140dp"
         android:layout_height="24dp"
-        android:layout_marginStart="92dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="36dp"
         android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -19,9 +20,19 @@
         android:id="@+id/tv_recy_tipo"
         android:layout_width="78dp"
         android:layout_height="22dp"
-        android:layout_marginStart="256dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginStart="208dp"
+        android:layout_marginTop="36dp"
         android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_abrir_alert"
+        android:layout_width="46dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="296dp"
+        android:layout_marginTop="56dp"
+        android:text="+"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
