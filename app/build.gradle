@@ -6,7 +6,7 @@ android {
     useLibrary 'android.test.base'
     useLibrary 'android.test.mock'
     defaultConfig {
-        applicationId "com.example.carre.gaviota007"
+        applicationId "com.gaviota.carre.gaviota007"
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
