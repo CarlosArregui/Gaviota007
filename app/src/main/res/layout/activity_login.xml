@@ -104,24 +104,23 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="0dp"
         android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="7dp"
         android:background="@drawable/shapesignup"
         android:padding="15dp"
         android:shadowColor="@android:color/transparent"
         android:text="Sign Up"
         android:textColor="@color/icons" />
 
-    <com.google.android.gms.common.SignInButton
+    <com.shobhitpuri.custombuttons.GoogleSignInButton
         android:id="@+id/signInButton"
-        android:layout_width="324dp"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:layout_centerInParent="true"
+        android:text="LOGIN WITH GOOGLE"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginBottom="6dp"
+        app:isDarkTheme="false"/>
 
 </LinearLayout>

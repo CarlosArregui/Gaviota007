@@ -115,7 +115,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         };
         imagen.setOnClickListener(entrar);
 
-        final Intent I = new Intent(this,Principal.class);
+        //final Intent I = new Intent(this,Principal.class);
 
         ((Button) customDialog.findViewById(R.id.aceptar)).setOnClickListener(new View.OnClickListener() {
 
@@ -123,7 +123,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void onClick(View view)
             {
                 customDialog.dismiss();
-                startActivity(I);
+                //startActivity(I);
             }
         });
 
