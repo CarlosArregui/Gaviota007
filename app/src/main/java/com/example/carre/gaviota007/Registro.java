@@ -53,9 +53,11 @@ public class Registro extends AppCompatActivity {
 
         //Paantalla de registro
         setContentView(R.layout.activity_registro);
+
         getSupportActionBar().hide();
         FirebaseApp.initializeApp(this);
         contexto=this;
+        layoutSnack=findViewById(R.id.layout_registro);
         mAuth = FirebaseAuth.getInstance();
         email=(EditText)findViewById(R.id.etEmail);
         pass=(EditText)findViewById(R.id.etPass1);

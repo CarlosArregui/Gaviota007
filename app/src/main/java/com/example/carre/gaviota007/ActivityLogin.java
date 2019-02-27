@@ -272,6 +272,7 @@ public class ActivityLogin extends AppCompatActivity {
 
 
 
+
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
 
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
