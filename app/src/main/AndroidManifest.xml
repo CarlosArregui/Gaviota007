@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.carre.gaviota007">
+    package="com.gaviota.carre.gaviota007">
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
@@ -32,21 +32,21 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
         <activity
-            android:name=".MapsActivity"
+            android:name="com.gaviota.carre.gaviota007.MapsActivity"
             android:label="@string/title_activity_maps"></activity>
         <activity
-            android:name=".Principal"
+            android:name="com.gaviota.carre.gaviota007.Principal"
             android:label="@string/title_activity_principal"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Registro"
+            android:name="com.gaviota.carre.gaviota007.Registro"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ActivityLogin"
-            android:parentActivityName=".SplashScreen"
+            android:name="com.gaviota.carre.gaviota007.ActivityLogin"
+            android:parentActivityName="com.gaviota.carre.gaviota007.SplashScreen"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SplashScreen"
+            android:name="com.gaviota.carre.gaviota007.SplashScreen"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,4 +1,4 @@
-package com.example.carre.gaviota007;
+package com.gaviota.carre.gaviota007;
 
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.TouchUtils;
