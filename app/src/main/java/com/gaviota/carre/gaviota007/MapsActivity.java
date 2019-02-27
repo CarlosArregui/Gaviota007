@@ -99,7 +99,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 if (latLng != null){
                     punto = mMap.addMarker(new MarkerOptions().position(latLng)
                             .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
-
                     sacarAlertDialog(latLng.toString());
                 }
             }
@@ -201,7 +200,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 else{
                     FirebaseApp.initializeApp(contexto);
 
-                    
+
                     //creamos el objeto evento
                     Evento e=new Evento(localizacion,fecha,titulo,descripcion,creador,participantes,tipo);
                     Punto p=new Punto(creador,localizacion);
