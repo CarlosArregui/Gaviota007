@@ -7,6 +7,7 @@ public class Usuario {
     ArrayList<String> eventos_creados;
     ArrayList<String> eventos_guardados;
 
+    
     public Usuario(String correo, String nombre, ArrayList<String> eventos_creados, ArrayList<String> eventos_guardados) {
         this.correo = correo;
         this.nombre = nombre;
