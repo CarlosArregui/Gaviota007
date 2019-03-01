@@ -1,23 +1,20 @@
 package com.gaviota.carre.gaviota007;
 
 import android.Manifest;
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -25,9 +22,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
 
 import com.google.android.gms.maps.CameraUpdate;
@@ -42,8 +37,6 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import org.w3c.dom.Text;
 
 import java.util.Calendar;
 
@@ -176,7 +169,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         };
         imagen.setOnClickListener(entrar);
 
-        final Intent I = new Intent(this,Principal.class);
+        final Intent I = new Intent(this,MainActivity.class);
 
         ((Button) customDialog.findViewById(R.id.btn_aceptar)).setOnClickListener(new View.OnClickListener() {
 
