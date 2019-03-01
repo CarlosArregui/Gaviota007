@@ -273,7 +273,7 @@ public class ActivityLogin extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Intent I = new Intent(context,MainActivity.class);
+                            Intent I = new Intent(context,Principal.class);
                             startActivity(I);
                             finish();
 
