@@ -212,7 +212,7 @@ public class ActivityLogin extends AppCompatActivity {
                                 snackbar("No has verificado el correo");
                             }else{
                                 if (task.isSuccessful()) {
-                                    Intent I = new Intent(context,Principal.class);
+                                    Intent I = new Intent(context,MainActivity.class);
                                     startActivity(I);
                                     snackbar("Logeado");
 
@@ -273,7 +273,7 @@ public class ActivityLogin extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Intent I = new Intent(context,Principal.class);
+                            Intent I = new Intent(context,MainActivity.class);
                             startActivity(I);
                             finish();
 

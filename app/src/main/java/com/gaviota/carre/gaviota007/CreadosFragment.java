@@ -1,4 +1,4 @@
-package com.example.carre.gaviota007;
+package com.gaviota.carre.gaviota007;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

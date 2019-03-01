@@ -1,4 +1,4 @@
-package com.example.carre.gaviota007;
+package com.gaviota.carre.gaviota007;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.principal);
-        getSupportActionBar().hide();
+
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 

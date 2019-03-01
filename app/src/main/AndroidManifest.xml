@@ -35,6 +35,9 @@
             android:name="com.gaviota.carre.gaviota007.MapsActivity"
             android:label="@string/title_activity_maps"></activity>
         <activity
+            android:name="com.gaviota.carre.gaviota007.MainActivity"
+            android:label="Main de jorge"></activity>
+        <activity
             android:name="com.gaviota.carre.gaviota007.Principal"
             android:label="@string/title_activity_principal"
             android:theme="@style/AppTheme.NoActionBar" />
