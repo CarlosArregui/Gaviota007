@@ -1,8 +1,10 @@
-package com.example.carre.gaviota007;
+package com.gaviota.carre.gaviota007;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -20,9 +22,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 
@@ -40,6 +44,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import org.w3c.dom.Text;
+
+import java.util.Calendar;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -93,7 +99,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 if (latLng != null){
                     punto = mMap.addMarker(new MarkerOptions().position(latLng)
                             .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
-
                     sacarAlertDialog(latLng.toString());
                 }
             }
@@ -119,6 +124,45 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         et_fecha=customDialog.findViewById(R.id.et_fecha);
         et_hora=customDialog.findViewById(R.id.et_hora);
         et_titulo=customDialog.findViewById(R.id.et_titulo);
+        et_fecha.setFocusable(false);
+        et_hora.setFocusable(false);
+        et_fecha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Calendar c = Calendar.getInstance();
+                int dia = c.get(Calendar.DAY_OF_MONTH);
+                int mes = c.get(Calendar.MONTH);
+                int ano = c.get(Calendar.YEAR);
+                DatePickerDialog datePickerDialog = new DatePickerDialog(contexto, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        et_fecha.setText(dayOfMonth + "/" + (month+1) + "/" + year);
+                    }
+                }, dia, mes, ano);
+                datePickerDialog.show();
+            }
+        });
+        et_hora.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Calendar c = Calendar.getInstance();
+                int hora = c.get(Calendar.HOUR_OF_DAY);
+                int minuto = c.get(Calendar.MINUTE);
+
+
+
+                TimePickerDialog timePickerDialog=new TimePickerDialog(contexto, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker time, int hourOfDay, int minute) {
+
+                        et_hora.setText(hourOfDay+":"+minute);
+                    }
+                },hora,minuto,true);
+
+
+                timePickerDialog.show();
+            }
+        });
 
 
 

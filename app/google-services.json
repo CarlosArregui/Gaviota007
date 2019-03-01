@@ -15,7 +15,7 @@
       },
       "oauth_client": [
         {
-          "client_id": "309577478544-9j5f2icgfqkd3sb8qk6050qndigivm2h.apps.googleusercontent.com",
+          "client_id": "309577478544-d1va1f9c07p60221pqq6llf0tt36ktl3.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.carre.gaviota007",
@@ -23,18 +23,46 @@
           }
         },
         {
-          "client_id": "309577478544-c5mhe5niuhjisn01uvl314ohsr3648jb.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.carre.gaviota007",
-            "certificate_hash": "82ace046419add2a1b9382393d1175e7ec1551d9"
-          }
-        },
+          "client_id": "309577478544-ap1gfufh3aqa6k7m7lb1sl5lcdce531q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
         {
-          "client_id": "309577478544-dhfudgftqip5ep3a8v47qlc84o8i0rnu.apps.googleusercontent.com",
+          "current_key": "AIzaSyDckpd8dT2p38AFbj1Py3I2cIbBhYzHMNg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "309577478544-vs6v1nrg3ghuthv3v4ck77rn3diuiptp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:309577478544:android:13c3c6a65bcbec53",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "309577478544-mo6hg55j9kmgiul0pcf7bjibpteorpa8.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.carre.gaviota007",
+            "package_name": "com.example.myapplication",
             "certificate_hash": "8a14775866f6fa95e2adccd294aca98c1c6bee32"
           }
         },
@@ -56,7 +84,95 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "309577478544-ap1gfufh3aqa6k7m7lb1sl5lcdce531q.apps.googleusercontent.com",
+              "client_id": "309577478544-vs6v1nrg3ghuthv3v4ck77rn3diuiptp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:309577478544:android:eca8259aad087a51",
+        "android_client_info": {
+          "package_name": "com.example.prueba_radiopuntos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "309577478544-d51e8oaqaib3ag402jah9n0qoneo6g59.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.prueba_radiopuntos",
+            "certificate_hash": "8a14775866f6fa95e2adccd294aca98c1c6bee32"
+          }
+        },
+        {
+          "client_id": "309577478544-ap1gfufh3aqa6k7m7lb1sl5lcdce531q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDckpd8dT2p38AFbj1Py3I2cIbBhYzHMNg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "309577478544-vs6v1nrg3ghuthv3v4ck77rn3diuiptp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:309577478544:android:656bd530ea3c707e",
+        "android_client_info": {
+          "package_name": "com.gaviota.carre.gaviota007"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "309577478544-i8ua9v935j1q0l6t8h49auf71hcuhf83.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gaviota.carre.gaviota007",
+            "certificate_hash": "6196bb3496fd222b1c7e6ebc01dd6f80048c3250"
+          }
+        },
+        {
+          "client_id": "309577478544-ap1gfufh3aqa6k7m7lb1sl5lcdce531q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDckpd8dT2p38AFbj1Py3I2cIbBhYzHMNg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "309577478544-vs6v1nrg3ghuthv3v4ck77rn3diuiptp.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

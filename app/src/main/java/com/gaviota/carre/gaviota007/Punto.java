@@ -1,11 +1,11 @@
-package com.example.carre.gaviota007;
+package com.gaviota.carre.gaviota007;
 
 public class Punto {
-    private String creador, tipo;
+    private String creador, localizacion;
 
     public Punto(String creador, String tipo) {
         this.creador = creador;
-        this.tipo = tipo;
+        this.localizacion = tipo;
     }
     public Punto(){
 
@@ -18,11 +18,11 @@ public class Punto {
         this.creador = creador;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getLocalizacion() {
+        return localizacion;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setLocalizacion(String localizacion) {
+        this.localizacion = localizacion;
     }
 }

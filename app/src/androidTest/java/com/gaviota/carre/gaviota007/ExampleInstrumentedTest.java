@@ -1,4 +1,4 @@
-package com.example.carre.gaviota007;
+package com.gaviota.carre.gaviota007;
 
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.TouchUtils;
@@ -6,7 +6,9 @@ import android.widget.Button;
 import android.widget.EditText;
 
 
-
+/**
+ * @author ernesto
+ */
 
 public class ExampleInstrumentedTest extends ActivityInstrumentationTestCase2<ActivityLogin> {
 
