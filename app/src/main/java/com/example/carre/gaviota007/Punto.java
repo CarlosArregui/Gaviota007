@@ -1,15 +1,17 @@
 package com.example.carre.gaviota007;
 
 public class Punto {
-    private String creador, localizacion;
+    private String creador, localizacion, id;
 
-    public Punto(String creador, String tipo) {
+    public Punto() {
+    }
+
+    public Punto(String creador, String localizacion, String id) {
         this.creador = creador;
-        this.localizacion = tipo;
+        this.localizacion = localizacion;
+        this.id = id;
     }
-    public Punto(){
 
-    }
     public String getCreador() {
         return creador;
     }
@@ -24,5 +26,13 @@ public class Punto {
 
     public void setLocalizacion(String localizacion) {
         this.localizacion = localizacion;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

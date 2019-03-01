@@ -9,8 +9,12 @@ public class Evento {
     String creador;
     int participantes;
     String tipo;
+    String id;
 
-    public Evento(String localizacion, String fecha, String titulo, String descripcion, String creador, int participantes, String tipo) {
+    public Evento() {
+    }
+
+    public Evento(String localizacion, String fecha, String titulo, String descripcion, String creador, int participantes, String tipo, String id) {
         this.localizacion = localizacion;
         this.fecha = fecha;
         this.titulo = titulo;
@@ -18,9 +22,7 @@ public class Evento {
         this.creador = creador;
         this.participantes = participantes;
         this.tipo = tipo;
-    }
-
-    public Evento() {
+        this.id = id;
     }
 
     public String getLocalizacion() {
@@ -78,4 +80,13 @@ public class Evento {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 }
+
