@@ -1,4 +1,4 @@
-package com.example.carre.gaviota007;
+package com.gaviota.carre.gaviota007;
 
 import android.Manifest;
 import android.app.AlertDialog;
@@ -12,8 +12,7 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentActivity;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -45,7 +44,11 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import org.w3c.dom.Text;
 
+import java.security.Principal;
 import java.util.Calendar;
+
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.FragmentActivity;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -177,7 +180,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         };
         imagen.setOnClickListener(entrar);
 
-        final Intent I = new Intent(this,Principal.class);
+        final Intent I = new Intent(this, Principal.class);
 
         ((Button) customDialog.findViewById(R.id.btn_aceptar)).setOnClickListener(new View.OnClickListener() {
 
