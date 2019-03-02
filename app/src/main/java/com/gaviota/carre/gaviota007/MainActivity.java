@@ -1,5 +1,6 @@
 package com.gaviota.carre.gaviota007;
 
+import android.content.Context;
 import android.content.Intent;
 import androidx.annotation.NonNull;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -9,12 +10,12 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
-
+    Context contexto;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.principal);
-
+        contexto = this;
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
