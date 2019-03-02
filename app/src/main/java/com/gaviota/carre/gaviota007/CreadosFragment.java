@@ -53,6 +53,7 @@ public class CreadosFragment extends Fragment {
         Query q= bbdd.child("jorge").child("eventos_creados");
         q.addValueEventListener(new ValueEventListener() {
             @Override
+            
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()){
 
