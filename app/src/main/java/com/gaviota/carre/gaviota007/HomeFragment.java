@@ -37,6 +37,7 @@ public class HomeFragment extends Fragment {
         rv = getView().findViewById(R.id.recycler_home);
         rv.setLayoutManager(new LinearLayoutManager(contexto));
         eventos = new ArrayList<>();
+
         FirebaseDatabase firebase = FirebaseDatabase.getInstance();
 
 
