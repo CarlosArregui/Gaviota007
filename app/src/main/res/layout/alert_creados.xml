@@ -87,13 +87,13 @@
         android:layout_weight="0">
 
         <Button
-            android:id="@+id/btn_aceptar"
+            android:id="@+id/btn_borrar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/dialog_button_selector"
-            android:text="Unirse"
-            android:textColor="@color/primary" />
+            android:background="@drawable/dialog_botton_eliminar"
+            android:text="Eliminar"
+            android:textColor="@color/icons" />
 
         <Button
             android:id="@+id/btn_cancelar"
