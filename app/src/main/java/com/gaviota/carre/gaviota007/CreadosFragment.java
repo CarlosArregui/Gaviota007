@@ -28,7 +28,7 @@ import java.util.List;
 public class CreadosFragment extends Fragment {
     RecyclerView rv;
     List<Evento> eventos;
-    AdaptadorRV adapter;
+    AdaptadorRVBorrar adapter;
     Context contexto;
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.home, container, false);
@@ -100,7 +100,7 @@ public class CreadosFragment extends Fragment {
 
 
                         }
-                        adapter = new AdaptadorRV(eventos);
+                        adapter = new AdaptadorRVBorrar(eventos);
                         adapter.notifyDataSetChanged();
                         rv.setAdapter(adapter);
 

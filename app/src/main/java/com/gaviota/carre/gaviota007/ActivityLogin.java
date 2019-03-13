@@ -281,7 +281,6 @@ public class ActivityLogin extends AppCompatActivity {
 
                            snackbar("Log de Google denegado");
                         }
-
                         // ...
                     }
                 });

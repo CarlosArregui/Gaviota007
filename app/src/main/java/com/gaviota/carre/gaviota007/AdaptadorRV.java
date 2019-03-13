@@ -6,11 +6,14 @@ import android.content.DialogInterface;
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.media.Image;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -43,8 +46,15 @@ public class AdaptadorRV extends RecyclerView.Adapter<AdaptadorRV.ListaPuntosHol
     @Override
     public void onBindViewHolder(@NonNull ListaPuntosHolder listaPuntosHolder, int i) {
         Evento evento =lista_eventos_recy.get(i);
-        listaPuntosHolder.tv_creador.setText(evento.getCreador());
-        listaPuntosHolder.tv_tipo.setText(evento.getLocalizacion());
+        listaPuntosHolder.tv_titulo_re.setText(evento.getTitulo());
+        listaPuntosHolder.tv_fecha.setText(evento.getFecha());
+        if(evento.getTipo().equalsIgnoreCase("medusas")){
+            listaPuntosHolder.imagen.setImageResource(R.drawable.medusa);
+        } else if(evento.getTipo().equalsIgnoreCase("limpiar")){
+            listaPuntosHolder.imagen.setImageResource(R.drawable.papelera);
+        } else if(evento.getTipo().equalsIgnoreCase("chorizos")){
+            listaPuntosHolder.imagen.setImageResource(R.drawable.ladron);
+        }
         listaPuntosHolder.i=i;
         // listaPuntosHolder.const_lay.setOnClickListener(oyente);
 
@@ -62,16 +72,17 @@ public class AdaptadorRV extends RecyclerView.Adapter<AdaptadorRV.ListaPuntosHol
 
 
     public static class ListaPuntosHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        TextView tv_creador, tv_tipo;
+        TextView tv_titulo_re, tv_fecha;
+        ImageView imagen;
         int i;
 
         Button btn_abrir;
         ConstraintLayout const_lay;
         public ListaPuntosHolder(@NonNull View itemView) {
             super(itemView);
-            tv_creador=itemView.findViewById(R.id.tv_recy_creador);
-            tv_tipo=itemView.findViewById(R.id.tv_recy_tipo);
-
+            tv_titulo_re=itemView.findViewById(R.id.tv_recy_titulo);
+            tv_fecha=itemView.findViewById(R.id.tv_recy_fecha);
+            imagen=itemView.findViewById(R.id.imagen);
             const_lay=(ConstraintLayout)itemView.findViewById(R.id.constraint_lay);
             itemView.setOnClickListener(this);
         }
@@ -90,22 +101,20 @@ public class AdaptadorRV extends RecyclerView.Adapter<AdaptadorRV.ListaPuntosHol
 
         Log.v("clicado","Clase:"+ v.getClass());
         AlertDialog.Builder constructor= new AlertDialog.Builder(v.getContext());
-        constructor.setTitle("Información Punto");
+        constructor.setTitle(evento.getTitulo());
         LayoutInflater inflador=LayoutInflater.from(v.getContext());
         final View vista=inflador.inflate(R.layout.alert_di_recy,null);
         constructor.setView(vista);
-        TextView tv_titulo= vista.findViewById(R.id.tv_titulo);
+
         TextView tv_creador= vista.findViewById(R.id.tv_creador);
-        TextView tv_participantes= vista.findViewById(R.id.tv_participantes);
-        TextView tv_localizacion= vista.findViewById(R.id.tv_localizacion);
+
         TextView tv_fecha_hora= vista.findViewById(R.id.tv_fecha_hora);
         TextView tv_descripcion= vista.findViewById(R.id.tv_desc);
 
-        tv_titulo.setText(evento.getTitulo());
+
         tv_creador.setText(evento.getCreador());
         String participantes= Integer.toString(evento.getParticipantes());
-        tv_participantes.setText(participantes);
-        tv_localizacion.setText(evento.getLocalizacion());
+
         tv_fecha_hora.setText(evento.getFecha());
         tv_descripcion.setText(evento.getDescripcion());
 
