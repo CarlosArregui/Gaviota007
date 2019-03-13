@@ -134,7 +134,7 @@ public class AdaptadorRVBorrar extends RecyclerView.Adapter<AdaptadorRVBorrar.Li
                 Log.d("dato",evento2.getId());
                 DatabaseReference bbdd= FirebaseDatabase.getInstance().getReference("eventos").child(evento2.getId());
                 bbdd.removeValue();
-                
+
             }
         });
         AlertDialog alert=constructor.create();
