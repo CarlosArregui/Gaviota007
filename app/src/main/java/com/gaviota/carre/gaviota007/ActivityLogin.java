@@ -264,7 +264,7 @@ public class ActivityLogin extends AppCompatActivity {
 
 
 
-
+//Metodo de logeo de google
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
 
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
@@ -297,6 +297,7 @@ public class ActivityLogin extends AppCompatActivity {
         snackbar.show();
     }
 
+    //Metodo para sacar un alertDialog de passForget
     private void alertDialog(){
         AlertDialog.Builder dialog=new AlertDialog.Builder(this);
         LayoutInflater inflater=this.getLayoutInflater();

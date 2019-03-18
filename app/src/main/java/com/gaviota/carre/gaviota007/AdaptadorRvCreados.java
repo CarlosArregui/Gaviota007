@@ -14,7 +14,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.List;
-//Comentar esta clase adaptador podria causar cambios en las leyes espacio-temporales de la fisica, asi que no lo hare.
 public class AdaptadorRvCreados extends RecyclerView.Adapter<AdaptadorRvCreados.ListaPuntosHolder> implements InterfazClickRV {
     @NonNull
     static List<Evento> lista_eventos_recy;
