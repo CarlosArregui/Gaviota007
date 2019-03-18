@@ -78,6 +78,7 @@ public class AlternativeFragment extends Fragment {
         startActivity(loging);
     }
     //cambio dez sesión de la cuenta de firebase y te lleva al login.
+    
     private void cambioContraseña() {
 
         AlertDialog.Builder dialog=new AlertDialog.Builder(getActivity());
